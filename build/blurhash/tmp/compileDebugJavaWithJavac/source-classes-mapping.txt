@@ -1,0 +1,2 @@
+com/raincal/blurhash/BuildConfig.java
+ com.raincal.blurhash.BuildConfig
