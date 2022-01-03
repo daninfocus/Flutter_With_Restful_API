@@ -10,7 +10,7 @@ import 'package:main/model/cliente.dart';
 class ClienteService {
   Future<List<Cliente>> getAllClientes() async {
     final resp = await get(
-        Uri.parse('http://192.168.1.42/API/index.php/clientes/cliente'));
+        Uri.parse('http://192.168.23.223/API/index.php/clientes/cliente'));
 
     var result = Clientes.fromMap(json.decode('{"clientes":${resp.body}}'));
 
@@ -19,7 +19,7 @@ class ClienteService {
 
   Future<bool> deleteCliente(int id) async {
     final resp = await get(
-        Uri.parse('http://192.168.1.42/API/index.php/clientes/cliente/$id'));
+        Uri.parse('http://192.168.23.223/API/index.php/clientes/cliente/$id'));
     if (resp.statusCode == 200) {
       return true;
     }
@@ -28,7 +28,7 @@ class ClienteService {
 
   Future<bool> insertPhotoHash(String hash, int id) async {
     final resp = await post(
-        Uri.parse('http://192.168.1.42/API/index.php/clientes/hash/$id'),
+        Uri.parse('http://192.168.23.223/API/index.php/clientes/hash/$id'),
         headers: <String, String>{
           'Content-Type': 'application/json',
         },
@@ -41,8 +41,8 @@ class ClienteService {
   }
 
   Future<List<Cliente>> getClienteByNombre(String nombre) async {
-    final resp = await get(
-        Uri.parse('http://192.168.1.42/API/index.php/clientes/nombre/$nombre'));
+    final resp = await get(Uri.parse(
+        'http://192.168.23.223/API/index.php/clientes/nombre/$nombre'));
 
     var result = Clientes.fromMap(json.decode('{"clientes":${resp.body}}'));
 
@@ -51,7 +51,7 @@ class ClienteService {
 
   Future<List<Cliente>> getClienteByPais(String pais) async {
     final resp = await get(
-        Uri.parse('http://192.168.1.42/API/index.php/clientes/pais/$pais'));
+        Uri.parse('http://192.168.23.223/API/index.php/clientes/pais/$pais'));
 
     var result = Clientes.fromMap(json.decode('{"clientes":${resp.body}}'));
 
@@ -60,7 +60,7 @@ class ClienteService {
 
   Future<List<Cliente>> getClienteByBoth(String nombre, String pais) async {
     final resp = await get(Uri.parse(
-        'http://192.168.1.42/API/index.php/clientes/both/$nombre/$pais'));
+        'http://192.168.23.223/API/index.php/clientes/both/$nombre/$pais'));
 
     var result = Clientes.fromMap(json.decode('{"clientes":${resp.body}}'));
 
@@ -69,7 +69,7 @@ class ClienteService {
 
   Future<bool> insertCliente(String json) async {
     final resp = await post(
-        Uri.parse('http://192.168.1.42/API/index.php/clientes/cliente'),
+        Uri.parse('http://192.168.23.223/API/index.php/clientes/cliente'),
         headers: <String, String>{
           'Content-Type': 'application/json',
         },
